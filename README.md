@@ -1,11 +1,11 @@
 <!-- Generated from readme.yml by LukeNeedham/ci-workflows (docs/readme.md). Edit readme.yml, not this file. -->
 # MatthewPersonalWebsite
 
-A personal website for Matthew, in the style of a CV.
+The personal website of Matthew J. Needham, architect.
 
 ## Description
 
-A one-page personal website showing a name and a title in a serif CV typeface.
+A one-page personal website showing his name and title in a serif CV typeface.
 It is a Next.js project using React, TypeScript and Chakra UI.
 
 ## Getting started as a developer

@@ -1,4 +1,4 @@
 export interface HomeUiState {
-  title: string
-  clickCount: number
+  name: string
+  role: string
 }

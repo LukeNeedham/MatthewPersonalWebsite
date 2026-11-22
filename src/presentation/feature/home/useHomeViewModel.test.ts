@@ -1,12 +1,9 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import { expect, test } from 'vitest'
 import { useHomeViewModel } from '@/presentation/feature/home/useHomeViewModel'
 
-test('counts the clicks', () => {
+test('shows the name and role', () => {
   const { result } = renderHook(() => useHomeViewModel())
-  expect(result.current.uiState.clickCount).toBe(0)
 
-  act(() => result.current.onButtonClick())
-
-  expect(result.current.uiState.clickCount).toBe(1)
+  expect(result.current.uiState).toEqual({ name: 'Matthew J. Needham', role: 'Architect' })
 })

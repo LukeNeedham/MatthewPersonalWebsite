@@ -7,7 +7,7 @@ import type { HomeUiState } from '@/presentation/feature/home/HomeUiState'
 export function useHomeViewModel() {
   const [clickCount, setClickCount] = useState(0)
 
-  const uiState: HomeUiState = { title: 'MatthewPersonalWebsite', clickCount }
+  const uiState: HomeUiState = { title: "Matthew's Personal Website", clickCount }
   const onButtonClick = () => setClickCount((count) => count + 1)
 
   return { uiState, onButtonClick }

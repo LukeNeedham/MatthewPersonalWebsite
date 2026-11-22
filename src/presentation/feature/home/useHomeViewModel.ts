@@ -1,0 +1,14 @@
+'use client'
+
+import { useState } from 'react'
+import type { HomeUiState } from '@/presentation/feature/home/HomeUiState'
+
+/** The state and the actions of the home page. It knows nothing of how the page looks. */
+export function useHomeViewModel() {
+  const [clickCount, setClickCount] = useState(0)
+
+  const uiState: HomeUiState = { title: 'MatthewPersonalWebsite', clickCount }
+  const onButtonClick = () => setClickCount((count) => count + 1)
+
+  return { uiState, onButtonClick }
+}

@@ -1,0 +1,9 @@
+.next
+node_modules
+yarn.lock
+src/generated
+next-env.d.ts
+# Kept in sync from ci-workflows (docs/sync.md): a reformat here would be reverted by the next sync
+.claude
+.github
+CLAUDE.md

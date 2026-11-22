@@ -27,6 +27,33 @@ const config = defineConfig({
           lineHeight: { base: '25px', sm: '30px', lg: '40px', xl: '45px' },
         },
       },
+      // A heading in small capitals: section headings, dates and links back
+      label: {
+        value: {
+          fontWeight: '600',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          fontSize: { base: '13px', md: '15px' },
+          lineHeight: '24px',
+        },
+      },
+      // The title of one item in a list
+      itemTitle: {
+        value: {
+          fontWeight: '600',
+          letterSpacing: '0.01em',
+          fontSize: { base: '26px', md: '32px' },
+          lineHeight: { base: '30px', md: '38px' },
+        },
+      },
+      // The text of an article, set a little larger and looser than `body` for reading
+      reading: {
+        value: {
+          fontWeight: '400',
+          fontSize: { base: '18px', md: '21px' },
+          lineHeight: { base: '29px', md: '34px' },
+        },
+      },
       body: {
         value: {
           fontWeight: '300',

@@ -9,3 +9,6 @@ next-env.d.ts
 CLAUDE.md
 # The root README is not Prettier's to judge: the scaffold writes it, and GitHub's own first one fails the check
 /README.md
+
+# Content, not code: the blog posts (they hold raw HTML)
+content

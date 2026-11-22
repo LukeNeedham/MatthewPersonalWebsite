@@ -27,3 +27,13 @@ yarn build
   (state down, events up), which makes it easy to test.
 - Imports use the alias `@/` (the folder `src/`), never `../`.
 - `scripts/`, if the site has one, runs at build time only; `src/` never reads files or builds content.
+
+## Blog articles
+
+Articles are markdown files in `content/blog` (the file name is the article id). To add one, add the markdown file and
+an entry in `BlogArticleProvider` (title, one-sentence summary and date). Do not put the title or date in the markdown:
+the page shows them itself. The first paragraph has no heading, and `##` starts a section.
+
+`scripts/` is **build time only**. `scripts/build-blog.ts` renders the markdown to HTML and compiles the article styling
+to CSS (from the Chakra theme, so it is never written twice), writing both to `src/generated` (git-ignored). It runs
+before `dev`, `build` and `typecheck`; with `yarn dev` already running, run `yarn generate` after changing a post.

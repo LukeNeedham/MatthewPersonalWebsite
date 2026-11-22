@@ -1,4 +1,5 @@
-import { Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Text, VStack } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { RootScaffold } from '@/presentation/common/RootScaffold'
 import type { HomeUiState } from '@/presentation/feature/home/HomeUiState'
 
@@ -17,6 +18,23 @@ export function HomePageContent({ uiState }: Props) {
         <Text as="p" textStyle="subTitle" textAlign="center">
           {uiState.role}
         </Text>
+        <Box pt={{ base: '28px', md: '40px' }}>
+          <Button
+            asChild
+            variant="outline"
+            textStyle="label"
+            h="auto"
+            px="32px"
+            py="12px"
+            borderRadius="0"
+            borderColor="#1a1a1a"
+            color="#1a1a1a"
+            transition="background 0.2s, color 0.2s"
+            _hover={{ background: '#1a1a1a', color: '#fff' }}
+          >
+            <NextLink href={uiState.blogHref}>Blog</NextLink>
+          </Button>
+        </Box>
       </VStack>
     </RootScaffold>
   )

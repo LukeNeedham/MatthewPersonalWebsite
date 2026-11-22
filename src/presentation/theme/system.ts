@@ -3,18 +3,27 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 // Text is never sized in a component: a component picks one of these styles with `textStyle`
 const config = defineConfig({
   theme: {
+    tokens: {
+      fonts: {
+        heading: { value: 'var(--font-cv), Georgia, serif' },
+        body: { value: 'var(--font-cv), Georgia, serif' },
+      },
+    },
     textStyles: {
       mainTitle: {
         value: {
-          fontWeight: '700',
+          fontWeight: '600',
+          letterSpacing: '0.02em',
           fontSize: { base: '40px', sm: '50px', lg: '55px', xl: '60px' },
-          lineHeight: { base: '40px', sm: '50px', lg: '55px', xl: '60px' },
+          lineHeight: { base: '44px', sm: '54px', lg: '60px', xl: '66px' },
         },
       },
       subTitle: {
         value: {
-          fontWeight: '700',
-          fontSize: { base: '20px', sm: '25px', lg: '35px', xl: '40px' },
+          fontWeight: '400',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          fontSize: { base: '16px', sm: '20px', lg: '24px', xl: '26px' },
           lineHeight: { base: '25px', sm: '30px', lg: '40px', xl: '45px' },
         },
       },

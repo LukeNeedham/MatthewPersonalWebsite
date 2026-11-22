@@ -1,21 +1,22 @@
-import { Button, Text, VStack } from '@chakra-ui/react'
+import { Text, VStack } from '@chakra-ui/react'
 import { RootScaffold } from '@/presentation/common/RootScaffold'
 import type { HomeUiState } from '@/presentation/feature/home/HomeUiState'
 
 interface Props {
   uiState: HomeUiState
-  onButtonClick: () => void
 }
 
 /** All of the UI of the home page. Stateless: state comes down, events go up. */
-export function HomePageContent({ uiState, onButtonClick }: Props) {
+export function HomePageContent({ uiState }: Props) {
   return (
     <RootScaffold>
-      <VStack gap="40px">
-        <Text textStyle="mainTitle" textAlign="center">
-          {uiState.title}
+      <VStack gap="12px">
+        <Text as="h1" textStyle="mainTitle" textAlign="center">
+          {uiState.name}
         </Text>
-        <Button onClick={onButtonClick}>Clicked {uiState.clickCount} times</Button>
+        <Text as="p" textStyle="subTitle" textAlign="center">
+          {uiState.role}
+        </Text>
       </VStack>
     </RootScaffold>
   )

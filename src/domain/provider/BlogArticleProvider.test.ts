@@ -14,7 +14,7 @@ test('every id is unique, because it is the markdown file name and the address',
 })
 
 test('an article is found by its id, and an unknown id has none', () => {
-  expect(BlogArticleProvider.getArticle('light-and-material')?.title).toBe('Light and Material')
+  expect(BlogArticleProvider.getArticle('lorem-ipsum')?.title).toBe('Lorem Ipsum')
   expect(BlogArticleProvider.getArticle('nothing-here')).toBeUndefined()
 })
 

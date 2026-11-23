@@ -44,7 +44,7 @@ are not repeated in the text:
 
 ```
 ---
-title: Light and Material
+title: My Article
 summary: One or two sentences, shown in the list of articles.
 date: 2026-09-12
 ---

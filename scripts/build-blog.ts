@@ -1,8 +1,8 @@
 /**
  * BUILD TIME ONLY. Run by `yarn generate` (also as the pre-step of `dev` and `build`).
  *
- * Renders the markdown articles to HTML, lists them (from the front matter of each) and compiles the
- * article styling to CSS, writing all three to `src/generated`. The app (`src`) only ever imports these outputs;
+ * Fetches the blog content (see `fetchContent`), renders the markdown articles to HTML, lists them (from the front matter of each) and compiles the
+ * article styling to CSS, writing all three to `src/generated`, and copies the article images to `public/blog-images`. The app (`src`) only ever imports these outputs;
  * it contains no markdown, highlighting or style-generation code.
  */
 import fs from 'node:fs/promises'
@@ -11,21 +11,34 @@ import { parseArticle } from './blog/parseArticle'
 import { renderMarkdown } from './blog/renderMarkdown'
 import { articleStyles } from './blog/articleStyles'
 import { chakraToCss } from './blog/chakraToCss'
+import { fetchContent } from './blog/fetchContent'
 
 const root = path.join(__dirname, '..')
-const contentDir = path.join(root, 'content', 'blog')
 const outDir = path.join(root, 'src', 'generated')
+const publicImagesDir = path.join(root, 'public', 'blog-images')
 
 async function main() {
+  const content = await fetchContent(root)
+  const articlesDir = path.join(content, 'articles')
   await fs.mkdir(outDir, { recursive: true })
 
+  // The images of the articles are served by the site, from `public/blog-images`
+  await fs.rm(publicImagesDir, { recursive: true, force: true })
+  await fs.mkdir(publicImagesDir, { recursive: true })
+  await fs.cp(path.join(content, 'images'), publicImagesDir, { recursive: true }).catch((error) => {
+    if (error.code !== 'ENOENT') throw error // no images yet is fine
+  })
+
   // Article id is the markdown file name
-  const files = (await fs.readdir(contentDir)).filter((it) => it.endsWith('.md')).sort()
+  const files = (await fs.readdir(articlesDir)).filter((it) => it.endsWith('.md')).sort()
   const html: Record<string, string> = {}
   const articles: { id: string; title: string; summary: string; date: string }[] = []
   for (const file of files) {
     const id = path.basename(file, '.md')
-    const { meta, body } = parseArticle(id, await fs.readFile(path.join(contentDir, file), 'utf-8'))
+    const { meta, body } = parseArticle(
+      id,
+      await fs.readFile(path.join(articlesDir, file), 'utf-8'),
+    )
     articles.push({ id, ...meta })
     html[id] = await renderMarkdown(body)
   }

@@ -19,7 +19,7 @@ export default async function Page(props: Props) {
   const contentHtml = (blogHtml as Record<string, string>)[id]
   if (article !== undefined && contentHtml === undefined) {
     throw new Error(
-      `No generated HTML for article '${article.id}': is content/blog/${article.id}.md missing?`,
+      `No generated HTML for article '${article.id}': is articles/${article.id}.md missing from the content repo?`,
     )
   }
   return <BlogArticlePage articleId={id} contentHtml={contentHtml} />

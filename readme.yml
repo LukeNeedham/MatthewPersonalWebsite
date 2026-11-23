@@ -1,0 +1,8 @@
+# The data of README.md: CI renders it (docs/readme.md in LukeNeedham/ci-workflows). Written by hand; never edit README.md.
+
+name: MatthewPersonalWebsite
+tagline: The personal website of Matthew J. Needham, architect.
+
+description: |
+  A one-page personal website showing his name and title in a serif CV typeface.
+  It is a Next.js project using React, TypeScript and Chakra UI.

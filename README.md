@@ -1,29 +1,39 @@
+<!-- Generated from readme.yml by LukeNeedham/ci-workflows (docs/readme.md). Edit readme.yml, not this file. -->
 # MatthewPersonalWebsite
 
-A website built with Next.js, React and Chakra UI. Every pull request gets a preview on Vercel and `main` is deployed
-by it, so do not push to `main` for any other reason than to release.
+The personal website of Matthew J. Needham, architect.
 
-## Development
+[Website](https://matthewjneedham.com)
+
+## Description
+
+A one-page personal website showing his name and title in a serif CV typeface.
+It is a Next.js project using React, TypeScript and Chakra UI.
+
+## Getting started as a developer
+
+Requirements: Node.js 24 and yarn.
 
 ```
+git clone https://github.com/LukeNeedham/MatthewPersonalWebsite.git
+cd MatthewPersonalWebsite
 yarn install
-yarn dev          # http://localhost:3000
-yarn lint         # ESLint and Prettier (yarn format fixes the formatting)
-yarn typecheck
-yarn test
-yarn build
+yarn dev          # the site at http://localhost:3000
+yarn lint         # the checks of CI
+yarn format       # fix the formatting
+yarn typecheck    # the types
+yarn test         # unit tests
+yarn build        # the production build
 ```
 
-## How the code is organised
+Every pull request gets a preview on Vercel, which CI links in a comment, and `main` is deployed by Vercel, so do not push to `main` for any other reason than to release.
 
-- `src/app/`: the routes, and nothing else. A `page.tsx` only renders the page of its feature.
-- `src/domain/`: what the site knows, with no UI. `model/` holds plain types and `provider/` holds the objects that
-  hand out data (`UrlProvider` has every route).
-- `src/presentation/`: everything on screen. `common/` is shared, `theme/` is the Chakra theme with the text styles, and
-  `feature/<name>/` is one folder per page.
-- **A page is `XPage` and `XPageContent`**, each in its own file, with `useXViewModel` and `XUiState` next to them.
-  `XPage` is stateful: it gets the state from `useXViewModel` and hands it down, with no UI of its own.
-  `XPageContent` is stateless and is all of the page's UI: it takes `XUiState` and one callback per user action
-  (state down, events up), which makes it easy to test.
-- Imports use the alias `@/` (the folder `src/`), never `../`.
-- `scripts/`, if the site has one, runs at build time only; `src/` never reads files or builds content.
+Like all my websites, it follows the shared architecture and conventions (Next.js, TypeScript, Chakra UI, MVVM with every page split into a `Page` and a `PageContent`): see [ci-workflows](https://github.com/LukeNeedham/ci-workflows/blob/main/docs/next-js-app.md).
+
+## Contributing
+
+Branch from `main`, make the change, and open a pull request. CI must be green before it is merged.
+
+## License
+
+All rights reserved. See [LICENSE](LICENSE).

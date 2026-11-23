@@ -3,6 +3,8 @@
 
 The personal website of Matthew J. Needham, architect.
 
+[Website](https://matthewjneedham.com)
+
 ## Description
 
 A one-page personal website showing his name and title in a serif CV typeface.

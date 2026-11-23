@@ -30,10 +30,19 @@ yarn build
 
 ## Blog articles
 
-Articles are markdown files in `content/blog` (the file name is the article id). To add one, add the markdown file and
-an entry in `BlogArticleProvider` (title, one-sentence summary and date). Do not put the title or date in the markdown:
-the page shows them itself. The first paragraph has no heading, and `##` starts a section.
+Articles are markdown files in `content/blog` (the file name is the article id). To add one, add the file: there is no
+list to update. It opens with a front matter block, and the page shows the title and date itself, so they are not
+repeated in the text:
 
-`scripts/` is **build time only**. `scripts/build-blog.ts` renders the markdown to HTML and compiles the article styling
+```
+---
+title: Light and Material
+summary: One or two sentences, shown in the list of articles.
+date: 2026-09-12
+---
+The first paragraph has no heading, and `##` starts a section.
+```
+
+`scripts/` is **build time only**. `scripts/build-blog.ts` renders the markdown to HTML, lists the articles from their front matter and compiles the article styling
 to CSS (from the Chakra theme, so it is never written twice), writing both to `src/generated` (git-ignored). It runs
-before `dev`, `build` and `typecheck`; with `yarn dev` already running, run `yarn generate` after changing a post.
+before `dev`, `build`, `typecheck` and `test`; with `yarn dev` already running, run `yarn generate` after changing a post.

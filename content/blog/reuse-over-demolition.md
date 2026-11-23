@@ -1,3 +1,8 @@
+---
+title: Reuse Before Demolition
+summary: The most sustainable building is the one that already exists. Notes on adapting what we have.
+date: 2026-11-07
+---
 The most sustainable building is the one that already exists. It already holds its embodied carbon, its history and, usually, a good deal of character.
 
 ## Start with what is there

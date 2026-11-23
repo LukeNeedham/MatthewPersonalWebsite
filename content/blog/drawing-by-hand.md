@@ -1,3 +1,8 @@
+---
+title: The Case for Drawing by Hand
+summary: Software draws faster than I ever will. Here is why I still start every project with a pencil.
+date: 2026-10-03
+---
 Every project I begin starts on paper, even when the deliverable will end up in a model.
 
 ## Slowness is the point

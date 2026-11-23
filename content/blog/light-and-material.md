@@ -1,3 +1,8 @@
+---
+title: Light and Material
+summary: Why the way a building meets daylight matters more to me than any facade, and the spaces that taught me so.
+date: 2026-09-12
+---
 Some buildings are remembered for their shape. The ones I return to are remembered for how they felt at four o'clock on an autumn afternoon.
 
 ## Daylight is a material

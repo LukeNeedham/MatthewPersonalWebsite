@@ -1,28 +1,11 @@
 import { BlogArticle } from '@/domain/model/BlogArticle'
 import { LocalDate } from '@/domain/model/LocalDate'
+import blogArticles from '@/generated/blog-articles.json'
 
-const articlesMap = {
-  lightAndMaterial: {
-    id: 'light-and-material',
-    title: 'Light and Material',
-    summary:
-      'Why the way a building meets daylight matters more to me than any facade, and the spaces that taught me so.',
-    publishDate: new LocalDate(12, 9, 2026),
-  },
-  drawingByHand: {
-    id: 'drawing-by-hand',
-    title: 'The Case for Drawing by Hand',
-    summary:
-      'Software draws faster than I ever will. Here is why I still start every project with a pencil.',
-    publishDate: new LocalDate(3, 10, 2026),
-  },
-  reuseOverDemolition: {
-    id: 'reuse-over-demolition',
-    title: 'Reuse Before Demolition',
-    summary:
-      'The most sustainable building is the one that already exists. Notes on adapting what we have.',
-    publishDate: new LocalDate(7, 11, 2026),
-  },
+/** "2026-11-07", as `scripts/build-blog.ts` writes it from the front matter of the markdown file. */
+function parseDate(iso: string): LocalDate {
+  const [year, month, day] = iso.split('-').map(Number)
+  return new LocalDate(day, month, year)
 }
 
 /** Newest first; articles published on the same day are ordered by id, which is unique. */
@@ -37,10 +20,17 @@ function compareNewestFirst(a: BlogArticle, b: BlogArticle): number {
   )
 }
 
-const articles: BlogArticle[] = Object.values(articlesMap).sort(compareNewestFirst)
+/** Every markdown file in `content/blog` is an article: there is no list to keep in step with them. */
+const articles: BlogArticle[] = blogArticles
+  .map((it) => ({
+    id: it.id,
+    title: it.title,
+    summary: it.summary,
+    publishDate: parseDate(it.date),
+  }))
+  .sort(compareNewestFirst)
 
 export const BlogArticleProvider = {
-  articlesMap,
   articles,
   getArticle: (id: string): BlogArticle | undefined => articles.find((it) => it.id === id),
 }

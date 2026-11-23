@@ -13,12 +13,9 @@ export function BlogPageContent({ uiState }: Props) {
   return (
     <RootScaffold back={{ label: 'Home', href: UrlProvider.home }}>
       <Box maxW="860px" mx="auto">
-        <VStack gap="12px" pb={{ base: '40px', md: '60px' }}>
+        <VStack pb={{ base: '40px', md: '60px' }}>
           <Text as="h1" textStyle="mainTitle" textAlign="center">
             Blog
-          </Text>
-          <Text as="p" textStyle="subTitle" textAlign="center">
-            Notes and interests
           </Text>
         </VStack>
         <BlogArticleList articles={uiState.articles} />

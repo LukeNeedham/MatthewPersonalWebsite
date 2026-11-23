@@ -31,16 +31,23 @@ Every pull request gets a preview on Vercel, which CI links in a comment, and `m
 
 Like all my websites, it follows the shared architecture and conventions (Next.js, TypeScript, Chakra UI, MVVM with every page split into a `Page` and a `PageContent`): see [ci-workflows](https://github.com/LukeNeedham/ci-workflows/blob/main/docs/next-js-app.md).
 
-The blog is generated at build time. `scripts/build-blog.ts` renders each markdown article to HTML, lists the
-articles from their front matter and compiles the article styling to CSS (from the Chakra theme), writing all of
-it to `src/generated` (git-ignored). It runs before `dev`, `build`, `typecheck` and `test`; with `yarn dev`
-already running, run `yarn generate` after changing an article.
+The blog is generated at build time, and its content is not in this repo: it is in
+[matthewpersonalwebsite-blogcontent](https://github.com/LukeNeedham/matthewpersonalwebsite-blogcontent), so that
+its author can write articles without any access to the code. `scripts/build-blog.ts` downloads the latest `main` of
+that repo into `content` (git-ignored), renders each markdown article to HTML, lists the articles from their front
+matter, copies the images to `public/blog-images` and compiles the article styling to CSS (from the Chakra theme),
+writing the rest to `src/generated` (git-ignored). It runs before `dev`, `build`, `typecheck` and `test`.
+
+To work on the blog with a local checkout of the content instead of the download, set `BLOG_CONTENT_DIR` to it (and
+`BLOG_CONTENT_REF` to download another branch). With `yarn dev` already running, run `yarn generate` after changing
+an article. A push to `main` of the content repo rebuilds the site through a Vercel Deploy Hook.
 
 ## Blog articles
 
-Articles are markdown files in `content/blog`, and the file name is the article id. To add one, add the file:
-there is no list to update. It opens with front matter, and the page shows the title and date itself, so they
-are not repeated in the text:
+Articles are markdown files in `articles` of the content repo, and the file name is the article id. To add one,
+add the file: there is no list to update. Images go in `images`, and an article shows one as
+`![Alt text](../images/name.png)`. An article opens with front matter, and the page shows the title and date
+itself, so they are not repeated in the text:
 
 ```
 ---
@@ -50,10 +57,6 @@ date: 2026-09-12
 ---
 The first paragraph has no heading, and `##` starts a section.
 ```
-
-## Contributing
-
-Branch from `main`, make the change, and open a pull request. CI must be green before it is merged.
 
 ## License
 

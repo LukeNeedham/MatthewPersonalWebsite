@@ -23,7 +23,7 @@
     "@chakra-ui/react": "^3.38.0",
     "@emotion/react": "^11.14.0",
     "next": "^16.4.6",
-    "next-js-blog": "github:LukeNeedham/next-js-blog#2efd1dd0208cdd7f0c0c79131c21d57305736b17",
+    "next-js-blog": "github:LukeNeedham/next-js-blog#v1.0.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

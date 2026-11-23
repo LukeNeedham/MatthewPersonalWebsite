@@ -51,10 +51,6 @@ date: 2026-09-12
 The first paragraph has no heading, and `##` starts a section.
 ```
 
-## Contributing
-
-Branch from `main`, make the change, and open a pull request. CI must be green before it is merged.
-
 ## License
 
 All rights reserved. See [LICENSE](LICENSE).

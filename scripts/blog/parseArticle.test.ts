@@ -17,7 +17,7 @@ test('reads the front matter and leaves the markdown', () => {
 })
 
 test('an article with no front matter is an error that names the file', () => {
-  expect(() => parseArticle('a', 'Just text')).toThrow('content/blog/a.md has no front matter')
+  expect(() => parseArticle('a', 'Just text')).toThrow('articles/a.md has no front matter')
 })
 
 test('a missing field is an error that names it', () => {

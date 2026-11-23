@@ -25,7 +25,7 @@ function unquote(value: string): string {
 export function parseArticle(id: string, source: string): ParsedArticle {
   const match = frontMatter.exec(source)
   if (match === null) {
-    throw new Error(`content/blog/${id}.md has no front matter (title, summary and date).`)
+    throw new Error(`articles/${id}.md has no front matter (title, summary and date).`)
   }
   const fields: Record<string, string> = {}
   for (const line of match[1].split(/\r?\n/)) {
@@ -36,11 +36,11 @@ export function parseArticle(id: string, source: string): ParsedArticle {
   }
   for (const key of ['title', 'summary', 'date']) {
     if (!fields[key]) {
-      throw new Error(`content/blog/${id}.md has no '${key}' in its front matter.`)
+      throw new Error(`articles/${id}.md has no '${key}' in its front matter.`)
     }
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(fields.date)) {
-    throw new Error(`content/blog/${id}.md: the date must be YYYY-MM-DD, not '${fields.date}'.`)
+    throw new Error(`articles/${id}.md: the date must be YYYY-MM-DD, not '${fields.date}'.`)
   }
   return {
     meta: { title: fields.title, summary: fields.summary, date: fields.date },

@@ -10,5 +10,6 @@ CLAUDE.md
 # The root README is not Prettier's to judge: the scaffold writes it, and GitHub's own first one fails the check
 /README.md
 
-# Content, not code: the blog posts (they hold raw HTML)
+# The downloaded blog content, and the images copied from it
 content
+public/blog-images

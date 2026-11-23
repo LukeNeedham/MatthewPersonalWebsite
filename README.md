@@ -31,9 +31,9 @@ Every pull request gets a preview on Vercel, which CI links in a comment, and `m
 
 Like all my websites, it follows the shared architecture and conventions (Next.js, TypeScript, Chakra UI, MVVM with every page split into a `Page` and a `PageContent`): see [ci-workflows](https://github.com/LukeNeedham/ci-workflows/blob/main/docs/next-js-app.md).
 
-The blog is generated at build time, and its content is not in this repo: it is in
-[matthewpersonalwebsite-blogcontent](https://github.com/LukeNeedham/matthewpersonalwebsite-blogcontent), so that
-its author can write articles without any access to the code. The build is the shared
+The blog content comes from the blog repo [matthewpersonalwebsite-blogcontent](https://github.com/LukeNeedham/matthewpersonalwebsite-blogcontent).
+
+The blog is generated at build time, and its content is not in this repo. The build is the shared
 [next-js-blog](https://github.com/LukeNeedham/next-js-blog) package, run by `scripts/build-blog.ts`, which only says
 what is this site's own: where its content is, the front matter of an article and the styling of an article. It
 downloads the latest `main` of the content repo into `content` (git-ignored), renders each markdown article to HTML,
@@ -43,7 +43,7 @@ styling to CSS (from the Chakra theme), writing the rest to `src/generated` (git
 
 To work on the blog with a local checkout of the content instead of the download, set `BLOG_CONTENT_DIR` to it (and
 `BLOG_CONTENT_REF` to download another branch). With `yarn dev` already running, run `yarn generate` after changing
-an article. A push to `main` of the content repo rebuilds the site through a Vercel Deploy Hook.
+an article. A push to `main` of the blog repo rebuilds the site through a Vercel Deploy Hook.
 
 ## Blog articles
 

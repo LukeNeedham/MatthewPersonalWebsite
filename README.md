@@ -61,6 +61,9 @@ date: 2026-09-12
 The first paragraph has no heading, and `##` starts a section.
 ```
 
+Add `draft: true` to the front matter to keep an article out of the blog: it stays in the content repo, and the
+build leaves it out (its fields are not checked). In Pages CMS this is the **Draft** checkbox.
+
 ## License
 
 All rights reserved. See [LICENSE](LICENSE).
